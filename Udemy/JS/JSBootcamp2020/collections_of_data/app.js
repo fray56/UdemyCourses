@@ -199,7 +199,7 @@ const author = books123.find(a => (
 //
 // the function returns a boolean result.
 //
-//loops through each item in an array.
+// loops through each item in an array.
 //
 // save results to a variable.
 //
