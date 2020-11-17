@@ -1,0 +1,49 @@
+#btn {
+	position: fixed;
+	top: 22px;
+	right: 22px;
+}
+.list-item a {
+	list-style: none;
+	text-decoration: none;
+}
+/* img {
+	height: 40vh;
+	position: fixed;
+	top: 56px;
+	right: 0;
+} */
+.menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100vh;
+	width: 100vw;
+	background: yellow;
+	position: fixed;
+	top: 0;
+	right: 0;
+
+	opacity: 0;
+	pointer-events: none;
+	/* transform: translateX(100%); */
+	transition: all 0.75s;
+}
+.menu ul li {
+	padding: 22px 0;
+}
+.menu ul li a {
+	color: orange;
+	font-size: 22px;
+	text-decoration: none;
+	list-style: none;
+}
+.slide {
+	/* transform: translateX(0); */
+	opacity: 1;
+	pointer-events: auto;
+}
+.section img {
+	height: 40vh;
+}
