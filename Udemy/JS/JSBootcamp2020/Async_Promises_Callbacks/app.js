@@ -176,3 +176,19 @@ fakeRequest('/dogs')
     // when chaining .then methods.
     // we must return a promise in the above .then method so the next .then method can run.
     // each .then method will only run if the one before it has a promise that has been returned
+
+
+
+
+
+const practicePromise = new Promise((reslove, reject) => {
+    const rand = Math.random();
+    rand < 0.3 ? reject() : reslove();
+    
+})
+    .then(() => {
+        console.log('this is good practice');
+    })
+    .catch(() => {
+        console.log('this didnt work but it still good practice');
+    })
