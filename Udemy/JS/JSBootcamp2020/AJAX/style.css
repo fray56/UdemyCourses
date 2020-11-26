@@ -1,0 +1,13 @@
+#drinksList {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+li {
+	list-style: none;
+	padding: 20px;
+	margin: 4px;
+	text-align: center;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
