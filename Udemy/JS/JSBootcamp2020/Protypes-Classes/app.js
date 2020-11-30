@@ -139,11 +139,27 @@ class Color {
         this.b = b;
         this.name = name;
     }
-
+    // we can create methods and then call them inside other methods
+    innerRGB() {
+        const {r,g,b} = this;
+        return `${r}, ${g}, ${b}`
+    }
     rgb() {
-        const {r,g,b,name} = this;
+        // we dont need to destructor r,g,b because we do that inside the innerRGB method.
         console.log(`this is ${name}`);
-        return `rgb(${r}, ${g}, ${b})`;
+        //we can call the innderRGB method
+        // have to use this keyword to call the method.
+        return `rgb(${this.innerRGB()})`;
+    }
+    rgba(a=1.0) {
+        // calling the innerRGB method can be used on multiple methods inside the class.
+        return `rgba(${this.innerRGB()}, ${a})`
+    }
+    hex() {
+        const {r,g,b} = this;
+        return (
+            '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
+        );
     }
 }
 // when calling a new Color we have to use the 'new' keyword
