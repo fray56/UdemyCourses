@@ -138,6 +138,11 @@ class Color {
         this.g = g;
         this.b = b;
         this.name = name;
+        // we can make functions inside the constructor that will automatically run when a new Color is made.
+        // this is helpful when we need to set keys, values or something for the methods we create to latch on to.
+        // we can make a method and then use this... inside the constructor to call that method when a new Color is made.
+        this.rgb();
+        //the rgb method will run automatically when we call a new Color. we dont have to run it manually.
     }
     // we can create methods and then call them inside other methods
     innerRGB() {
@@ -164,3 +169,60 @@ class Color {
 }
 // when calling a new Color we have to use the 'new' keyword
 const c1 = new Color(34,46,77, 'my colour');
+
+
+// extends keyword
+//
+// if we have multiple classes that have the same contrustor and/or methods to build up the new objects.
+// we can create a 'parent' class and then extend the classes to include the parent class.
+// 
+
+class Animals {
+    // this constructor will run if the class that extends animals doesnt have an contructor.
+    // the this keyword will automatically be assisgned to the new object that is created.
+    constructor(name, age) {
+        this.name = name;
+        this.age = age
+    }
+    eat() {
+        return `${this.name} is eating`;
+    }
+}
+
+class Dog extends Animals {
+    // we can use the Super() keyword if we want to use the Animals constructor but also use a constructor 
+    // inside Dog. It lets us use the parent constructor but if there are specific things we want to run inside the 
+    // Dog constructor we can do it like this.
+    constructor(name, age, tail = 'yes') {
+        // this will use the name and age that is set in the Animals class and just reference them here.
+        super(name, age);
+        // this.tail is set here in the Dog class.
+        this.tail = tail;
+    }
+    // we dont need to call a constructor because it uses the one set in Animals
+    // we have access to the eat method that is set in the Animals class
+    woof() {
+        // woof is automaticallty assigned to the prototype
+        const {name, age} = this;
+        return `${name} says woof woof and is ${age} years old`;
+    }
+}
+
+class Cat extends Animals {
+    // no constructor needed because its set in the Animals class
+    // we have access to the eat method set in the Animals class
+    meow() {
+        const {name, age} = this;
+        return `${name} says meow and is ${age} years old`;
+    }
+    // if we set a method inside Dog but there is alreadt one set to the same name in Animals
+    // the one set in dog will be used.
+    // it overwrites the one in Animals.
+    // it only uses the methods in Animals if it cant find thr method in Dog first
+    eat() {
+        return `${this.name} scoffs his food!`;
+    }
+}
+
+const cat1 = new Cat('toby', 17);
+const dog1 = new Dog('billy', 16);
