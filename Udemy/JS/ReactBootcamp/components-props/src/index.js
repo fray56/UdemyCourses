@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // we have to import all the components we want to use here!
 import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
 
 // this function gets an image from the unsplash api that we use as a prop in the commentDetail component
 function getAvatar() {
@@ -10,7 +11,9 @@ function getAvatar() {
 
 const App = () => {
     return (
-        <div className="ui container comments">
+        
+        <div className="ui  container comments">
+            
             {/* we can render our components inside the jsx */}
             {/* we dont use {} when redering our components. We treat them as a jsx element */}
             {/* there is no limit on the amount of components we can use. */}
@@ -22,27 +25,48 @@ const App = () => {
             {/* we can use any name  */}
             {/* we can pass any type of value down to the child */}
            
-            {/* we call the prop author
-            then we can pass the name of the author down as a string */}
-            <CommentDetail 
-            author="Sam" 
-            timePosted="Today at 3:23pm"
-            userComment="This is a really good comment"
-            getImage={getAvatar()}
-            />
-            <CommentDetail 
-            author="Tom" 
-            timePosted="Today at 11:45am"
-            userComment="This is just the second comment"
-            getImage={getAvatar()}
-            />
-            <CommentDetail 
-            author="Amy" 
-            timePosted="Today at 1:30pm"
-            userComment="This is the last comment"
-            getImage={getAvatar()}
-            />
-            
+            {/* we can pass a component as a child component as a prop. 
+                inside the ApprovalCard component we must pass in props */}
+            <ApprovalCard>
+                <CommentDetail 
+                // we call the prop author
+                // then we can pass the name of the author down as a string
+                author="Sam" 
+                timePosted="Today at 3:23pm"
+                userComment="This is a really good comment"
+                getImage={getAvatar()}
+                />
+            </ApprovalCard>
+
+            <ApprovalCard>
+                <CommentDetail 
+                author="Tom" 
+                timePosted="Today at 11:45am"
+                userComment="This is just the second comment"
+                getImage={getAvatar()}
+                />
+            </ApprovalCard>
+
+            <ApprovalCard>
+                <CommentDetail 
+                author="Amy" 
+                timePosted="Today at 1:30pm"
+                userComment="This is the last comment"
+                getImage={getAvatar()}
+                />
+            </ApprovalCard>
+
+            {/* We can insert anything into the ApprovalCard and it will be passed as the content 
+                We can pass any data into the approvalCard - jsx below*/}
+
+            {/* Even when we are not passing through a child component... we HAVE to make sure props is passed into the parent component
+                and that {props.children} is put where we want the passed through values to be shown. */}
+            <ApprovalCard>
+                <div>
+                    <h4>Warning!</h4>
+                    Are you sure you want to do this?
+                </div>
+            </ApprovalCard>
         </div>
     );
 }
