@@ -2,6 +2,7 @@ import React from 'react';
 // don't need to import axios here as well because its imported in the unsplash file.
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar'
+import ImageList from './ImageList';
 
 class App extends React.Component {
 
@@ -21,7 +22,7 @@ class App extends React.Component {
             // check documentation for the search params and headers when making an api call.
             params: {
                 // this is the search result we pass through the user input.
-                // we ger the 'term' from the onSearchSubmit function we pass down as a prop to the SearchBar component.
+                // we get the 'term' from the onSearchSubmit function we pass down as a prop to the SearchBar component.
                 query: term
             },
             
@@ -52,7 +53,9 @@ class App extends React.Component {
                     access to here in the parent component.
                     Good way to pass data back from the child component to the parent. */}
                 <SearchBar onSubmit={ this.onSearchSubmit } />
-                <h3>Found: { this.state.images.length } images</h3>
+                {/* ImageList is a component that will render a list of images of what the user has serched for.
+                    we send the images state array down to the imagelist component by using props. */}
+                <ImageList  images={ this.state.images } />
             </div>
         );
     }
